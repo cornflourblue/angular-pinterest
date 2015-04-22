@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS directives for Pinterest buttons and widgets</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div ng-controller="myController as vm" class="jumbotron text-center">
+        <div class="container">
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'"></pin-it>
+            </div>
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'" color="'red'"></pin-it>
+            </div>
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'" color="'white'"></pin-it>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="container">
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'"></pin-it>
+            </div>
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'" color="'red'"></pin-it>
+            </div>
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'" color="'white'"></pin-it>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="container">
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'"></pin-it>
+            </div>
+            <div class="col-xs-4">
+                <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'" size="'large'"></pin-it>
+            </div>
+        </div>
+    </div>
+    <div class="credits text-center">
+        <p>
+            <a href="https://www.pointblankdevelopment.com.au/blog/AngularJS-directives-for-Pinterest-buttons-and-widgets">AngularJS directives for Pinterest buttons and widgets</a>
+        </p>
+        <p>
+            <a href="https://www.pointblankdevelopment.com.au">Point Blank Web Development Sydney</a>
+        </p>
+    </div>
+    <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+    <script src="../angular-pinterest.js"></script>
+    <script src="demo.js"></script>
+</body>
+</html>
