@@ -5,7 +5,7 @@ AngularJS directives for Pinterest buttons and widgets
 
 ###Demo
 
-*Coming soon*
+To see a demo and further details go to https://www.pointblankdevelopment.com.au/blog/angularjs-directives-for-pinterest-buttons-and-widgets
 
 ###Installation
 

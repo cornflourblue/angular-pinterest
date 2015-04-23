@@ -1,7 +1,7 @@
 ﻿/**
  * AngularJS directives for Pinterest buttons and widgets
  * @author Jason Watmore <jason@pointblankdevelopment.com.au> (https://www.pointblankdevelopment.com.au)
- * @version 1.0.0
+ * @version 1.1.0
  */
 (function () {
     'use strict';
@@ -28,23 +28,7 @@
 
         function link(scope, element, attrs) {
             if (!$window.parsePins) {
-                // Load Pinterest SDK if not already loaded
-                (function (d) {
-                    var f = d.getElementsByTagName('SCRIPT')[0],
-                        p = d.createElement('SCRIPT');
-                    p.type = 'text/javascript';
-                    p.async = true;
-                    p.src = '//assets.pinterest.com/js/pinit.js';
-                    p['data-pin-build'] = 'parsePins';
-                    p.onload = function () {
-                        if (!!$window.parsePins) {
-                            renderPinItButton();
-                        } else {
-                            setTimeout(p.onload, 250);
-                        }
-                    };
-                    f.parentNode.insertBefore(p, f);
-                }($window.document));
+                loadScript('//assets.pinterest.com/js/pinit.js', renderPinItButton, 'parsePins', { 'data-pin-build': 'parsePins' });
             } else {
                 renderPinItButton();
             }
@@ -52,17 +36,19 @@
             var watchAdded = false;
             function renderPinItButton() {
                 if (!scope.description && !watchAdded) {
-                    // wait for data if it hasn't loaded yet
+                    // wait for angular to bind scope data
                     watchAdded = true;
                     var unbindWatch = scope.$watch('description', function (newValue, oldValue) {
                         if (newValue) {
                             renderPinItButton();
 
-                            // only need to run once
+                            // unbind the watch since the button is rendered
                             unbindWatch();
                         }
                     });
                 } else {
+                    // set the height based on the size and shape, the button 
+                    // defaults to small so height only has to be set for large buttons
                     var height = '';
                     if (scope.size === 'large') {
                         if(scope.shape === 'round') {
@@ -84,6 +70,44 @@
                             'data-pin-height="' + height + '"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" /></a>'
                     );
                     $window.parsePins(element.parent()[0]);
+                }
+            }
+        }
+
+        // function to load non-angular script and (if required) wait for it to run
+        function loadScript(url, callback, propToWaitFor, customScriptAttrs) {
+            var d = $window.document;
+            var s = d.querySelector('script[src="' + url + '"]');
+
+            // add script only once to the page
+            if (!s) {
+                s = d.createElement('script');
+                s.async = true;
+                s.src = url;
+
+                // wait for property to load if one was specified, otherwise 
+                // run callback function when script is loaded
+                s.onload = propToWaitFor ? waitForProp : callback;
+
+                // add custom attributes to script tag if specified
+                if (customScriptAttrs) {
+                    angular.forEach(customScriptAttrs, function (value, key) {
+                        s[key] = value;
+                    });
+                }
+
+                d.body.appendChild(s);
+            } else {
+                propToWaitFor ? waitForProp() : callback();
+            }
+
+            // wait for script to run and define property on global 
+            // scope, then run callback function
+            function waitForProp() {
+                if ($window[propToWaitFor]) {
+                    callback();
+                } else {
+                    setTimeout(waitForProp, 250);
                 }
             }
         }
