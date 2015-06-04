@@ -1,7 +1,11 @@
-﻿.jumbotron { 
-    padding-top:45px;
+﻿body {
+    padding: 20px;
 }
 
-.container {
-    margin-top:20px;
+.pin-it-button .container {
+    margin-top: 20px;
+}
+
+.nav li a {
+    cursor: pointer;
 }

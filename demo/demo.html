@@ -7,37 +7,89 @@
     <link rel="stylesheet" href="demo.css" />
 </head>
 <body>
-    <div ng-controller="myController as vm" class="jumbotron text-center">
-        <div class="container">
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'"></pin-it>
+    <div ng-controller="myController as vm" ng-init="vm.view = 'pinIt'" class="text-center">
+        <div class="nav-container">
+            <ul class="nav nav-tabs">
+                <li ng-class="{'active': vm.view === 'pinIt'}"><a ng-click="vm.view = 'pinIt'">Pin It Button</a></li>
+                <li ng-class="{'active': vm.view === 'pinFollow'}"><a ng-click="vm.view = 'pinFollow'">Follow Button</a></li>
+                <li ng-class="{'active': vm.view === 'pinWidget'}"><a ng-click="vm.view = 'pinWidget'">Pin Widget</a></li>
+                <li ng-class="{'active': vm.view === 'pinProfile'}"><a ng-click="vm.view = 'pinProfile'">Profile Widget</a></li>
+                <li ng-class="{'active': vm.view === 'pinBoard'}"><a ng-click="vm.view = 'pinBoard'">Board Widget</a></li>
+            </ul>
+        </div>
+
+        <div class="jumbotron">
+            <!-- Pin It Button -->
+            <div ng-show="vm.view === 'pinIt'" class="pin-it-button">
+                <div class="container">
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'"></pin-it>
+                    </div>
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'" color="'red'"></pin-it>
+                    </div>
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'" color="'white'"></pin-it>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'"></pin-it>
+                    </div>
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'" color="'red'"></pin-it>
+                    </div>
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'" color="'white'"></pin-it>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'"></pin-it>
+                    </div>
+                    <div class="col-xs-4">
+                        <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'" size="'large'"></pin-it>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'" color="'red'"></pin-it>
+
+            <!-- Follow Button -->
+            <div ng-if="vm.view === 'pinFollow'">
+                <div class="container">
+                    <div class="text-center">
+                        <pin-follow username="'pointblankdev'" fullname="'Point Blank Development'"></pin-follow>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'above'" color="'white'"></pin-it>
+
+            <!-- Pin Widget -->
+            <div ng-if="vm.view === 'pinWidget'">
+                <div class="container">
+                    <div class="text-center">
+                        <pin-widget pin-id="'421790321327787486'"></pin-widget>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Widget -->
+            <div ng-if="vm.view === 'pinProfile'">
+                <div class="container">
+                    <div class="text-center">
+                        <pin-profile username="'pointblankdev'" image-width="'200'" board-height="'140'" board-width="'250'"></pin-profile>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Board Widget -->
+            <div ng-if="vm.view === 'pinBoard'">
+                <div class="container">
+                    <div class="text-center">
+                        <pin-board username="'pointblankdev'" board-name="'point-blank-development'" image-width="'200'" board-height="'140'" board-width="'250'"></pin-board>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container">
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'"></pin-it>
-            </div>
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'" color="'red'"></pin-it>
-            </div>
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" config="'beside'" size="'large'" color="'white'"></pin-it>
-            </div>
-        </div>
-        <div class="container">
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'"></pin-it>
-            </div>
-            <div class="col-xs-4">
-                <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'" size="'large'"></pin-it>
-            </div>
-        </div>
+
     </div>
     <div class="credits text-center">
         <p>
