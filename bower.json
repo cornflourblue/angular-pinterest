@@ -1,8 +1,8 @@
 {
   "name": "angular-pinterest",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "authors": [
-    "Jason Watmore <jason@pointblankdevelopment.com.au> (http://jasonwatmore.com)"
+    "Jason Watmore <jason@pointblankdevelopment.com.au> (https://www.pointblankdevelopment.com.au/)"
   ],
   "description": "AngularJS directives for Pinterest buttons and widgets",
   "main": "angular-pinterest.js",
