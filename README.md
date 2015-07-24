@@ -13,7 +13,7 @@ Install using bower: `bower install angular-pinterest`
 
 Alternatively download the code and include the angular-pinterest.js file in your page.
 
-Add the 'angular-pinterest' directive as a dependency of your AngularJS application:
+Add the 'angular-pinterest' module as a dependency of your AngularJS application:
 
 ```javascript
 angular.module('myApp', ['angular-pinterest']);
