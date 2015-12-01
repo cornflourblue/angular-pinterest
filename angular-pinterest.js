@@ -1,4 +1,4 @@
-﻿/**
+/**
  * AngularJS directives for Pinterest buttons and widgets
  * @author Jason Watmore <jason@pointblankdevelopment.com.au> (https://www.pointblankdevelopment.com.au)
  * @version 1.1.0
@@ -66,9 +66,9 @@
 
                     element.html(
                         '<a href="//www.pinterest.com/pin/create/button/' +
-                            '?url=' + (scope.url || $location.absUrl()) +
-                            '&media=' + scope.media +
-                            '&description=' + scope.description + '" ' +
+                            '?url=' + encodeURIComponent(scope.url || $location.absUrl()) +
+                            '&media=' + encodeURIComponent(scope.media) +
+                            '&description=' + encodeURIComponent(scope.description) + '" ' +
                             'data-pin-do="buttonPin" ' +
                             'data-pin-config="' + (scope.config || '') + '" ' +
                             'data-pin-shape="' + (scope.shape || '') + '" ' + 
