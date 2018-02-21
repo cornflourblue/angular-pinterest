@@ -3,11 +3,11 @@ angular-pinterest
 
 AngularJS directives for Pinterest buttons and widgets
 
-###Demo
+### Demo
 
 To see a demo and further details go to https://www.pointblankdevelopment.com.au/blog/angularjs-directives-for-pinterest-buttons-and-widgets
 
-###Installation
+### Installation
 
 Install using bower: `bower install angular-pinterest`
 
@@ -19,9 +19,9 @@ Add the 'angular-pinterest' module as a dependency of your AngularJS application
 angular.module('myApp', ['angular-pinterest']);
 ```
 
-###Usage
+### Usage
 
-####Pin It Button
+#### Pin It Button
 
 Create a 'pin-it' element with attributes for the different settings of the button, values can 
 be set directly or viewmodel properties can be used that are set in the controller.
@@ -40,7 +40,7 @@ Example
 <pin-it url="vm.url" description="vm.description" media="vm.media" shape="'round'" size="'large'"></pin-it>
 ```
 
-####Follow Button
+#### Follow Button
 
 Create a 'pin-follow' element with attributes for Pinterest `username` and `fullname`.
 
@@ -50,7 +50,7 @@ Example
 <pin-follow username="'pointblankdev'" fullname="'Point Blank Development'"></pin-follow>
 ```
 
-####Pin Widget
+#### Pin Widget
 
 Create a 'pin-widget' element with an attribute for the `pin-id`.
 
@@ -60,7 +60,7 @@ Example
 <pin-widget pin-id="'421790321327787486'"></pin-widget>
 ```
 
-####Profile Widget
+#### Profile Widget
 
 Create a 'pin-profile' element with attributes for Pinterest `username`, `image-width`, `board-height` and `board-width`.
 
@@ -70,7 +70,7 @@ Example
 <pin-profile username="'pointblankdev'" image-width="'200'" board-height="'140'" board-width="'250'"></pin-profile>
 ```
 
-####Board Widget
+#### Board Widget
 
 Create a 'pin-board' element with attributes for Pinterest `username`, `board-name`, `image-width`, `board-height` and `board-width`.
 
